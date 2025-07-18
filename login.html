@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body.simple-cyber {
+      min-height: 100vh;
+      background: #eaf6fb;
+      position: relative;
+      overflow: hidden;
+    }
+    .top-left-bar {
+      position: fixed;
+      top: 18px;
+      left: 18px;
+      display: flex;
+      align-items: center;
+      z-index: 10;
+    }
+    .three-dots {
+      font-size: 2.2rem;
+      color: #1976d2;
+      cursor: pointer;
+      user-select: none;
+      margin-right: 10px;
+      letter-spacing: 0.3em;
+      font-family: monospace;
+    }
+    .cyber-img {
+      width: 36px;
+      height: 36px;
+      margin-right: 10px;
+    }
+    .select-popup {
+      display: none;
+      position: absolute;
+      top: 40px;
+      left: 0;
+      background: #fff;
+      border: 1px solid #1976d2;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+      padding: 8px 12px;
+      min-width: 170px;
+      z-index: 20;
+    }
+    .select-popup select {
+      width: 100%;
+      border: 1px solid #1976d2;
+      border-radius: 6px;
+      padding: 6px 8px;
+      color: #1976d2;
+      background: #f4faff;
+      font-family: Arial, sans-serif;
+      font-size: 1rem;
+    }
+    .cyber-btn {
+      border: 1px solid #1976d2;
+      background: #1976d2;
+      color: #fff;
+      font-weight: bold;
+      transition: background 0.2s, color 0.2s;
+    }
+    .cyber-btn:hover {
+      background: #125ea2;
+      color: #fff;
+    }
+    .form-control {
+      background: #f4faff;
+      color: #1976d2;
+      border: 1px solid #1976d2;
+    }
+    .form-control:focus {
+      box-shadow: 0 0 4px #1976d2;
+      border-color: #1976d2;
+      background: #eaf6fb;
+      color: #1976d2;
+    }
+    label.form-label {
+      color: #1976d2;
+      font-weight: bold;
+    }
+    .container {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+  <script>
+    function toggleSelectPopup() {
+      var popup = document.getElementById('select-popup');
+      popup.style.display = (popup.style.display === 'block') ? 'none' : 'block';
+    }
+    window.onclick = function(event) {
+      var popup = document.getElementById('select-popup');
+      var dots = document.getElementById('three-dots');
+      if (!popup || !dots) return;
+      if (event.target !== popup && event.target !== dots) {
+        popup.style.display = 'none';
+      }
+    }
+  </script>
+</head>
+<body class="simple-cyber">
+  <div class="top-left-bar">
+    <span class="three-dots" id="three-dots" onclick="toggleSelectPopup()">...</span>
+    <svg class="cyber-img" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#1976d2" stroke-width="2"/><path d="M8 12l2 2 4-4" stroke="#1976d2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="select-popup" id="select-popup">
+      <select>
+        <option>My Complaints</option>
+        <option>My Reports</option>
+        <option>Settings</option>
+        <option>Help</option>
+      </select>
+    </div>
+  </div>
+  <div class="container mt-5">
+    <h2 class="text-center mb-4" style="color:#1976d2;font-weight:bold;">User Login</h2>
+    <form method="POST" class="col-md-6 offset-md-3 mb-5">
+      <input type="hidden" name="login_type" value="user">
+      <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input type="text" class="form-control" name="username" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" required>
+      </div>
+      <button type="submit" class="btn cyber-btn w-100">Login as User</button>
+      <p class="text-center mt-3">Don't have an account? <a href="/register" style="color:#1976d2;">Register</a></p>
+    </form>
+    <h2 class="text-center mb-4" style="color:#1976d2;font-weight:bold;">Admin Login</h2>
+    <form method="POST" class="col-md-6 offset-md-3">
+      <input type="hidden" name="login_type" value="admin">
+      <div class="mb-3">
+        <label class="form-label">Admin Username</label>
+        <input type="text" class="form-control" name="username" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" required>
+      </div>
+      <button type="submit" class="btn cyber-btn w-100">Login as Admin</button>
+    </form>
+  </div>
+</body>
+</html>
+

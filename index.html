@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cybercrime Reporting Portal</title>
+  <link href="https://fonts.googleapis.com/css?family=Orbitron:700|Montserrat:900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(120deg, #f7fbff 0%, #e3f0fc 40%, #1976d2 100%);
+      background-size: 200% 200%;
+      animation: bgMotion 10s ease-in-out infinite alternate;
+    }
+    @keyframes bgMotion {
+      0% {background-position: 0% 50%;}
+      100% {background-position: 100% 50%;}
+    }
+    .navbar-cyber {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      width: 100vw;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      align-items: center;
+      padding: 12px 24px;
+      z-index: 10;
+      box-shadow: 0 2px 24px rgba(0,255,255,0.12);
+    }
+    .navbar-icons {
+      display: flex;
+      gap: 28px;
+      margin-left: auto;
+    }
+    .navbar-icon-link {
+      color: #00fff7;
+      text-decoration: none;
+      font-family: 'Orbitron', Arial, sans-serif;
+      font-size: 1.1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: color 0.2s;
+    }
+    .navbar-icon-link:hover {
+      color: #fff;
+    }
+    .navbar-icon-link i {
+      font-size: 1.5rem;
+      margin-bottom: 2px;
+    }
+    .main-content {
+      width: 100vw;
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      animation: fadeIn 1.2s ease 0.2s forwards;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    .portal-title {
+      text-align: center;
+      color: #1976d2;
+      font-family: 'Orbitron', Arial, sans-serif;
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      font-weight: 900;
+    }
+    .portal-quote {
+      text-align: center;
+      color: #1976d2;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1.2rem;
+      margin-bottom: 36px;
+      font-style: italic;
+    }
+    .report-title {
+      text-align: center;
+      color: #1976d2;
+      font-family: 'Orbitron', Arial, sans-serif;
+      font-size: 2rem;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+    }
+    .report-subtitle {
+      text-align: center;
+      color: #1565c0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1.1rem;
+      margin-bottom: 36px;
+    }
+    .report-btn-cyber {
+      font-family: 'Orbitron', Arial, sans-serif;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #fff;
+      background: #1976d2;
+      border: 3px solid #1976d2;
+      border-radius: 16px;
+      padding: 18px 48px;
+      box-shadow: 0 0 8px #1976d2, 0 0 16px #1976d2;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.7s cubic-bezier(.23,1.01,.32,1);
+      letter-spacing: 2px;
+      margin-top: 12px;
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: btnSlideIn 1.2s 0.8s cubic-bezier(.23,1.01,.32,1) forwards;
+    }
+    @keyframes btnSlideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .aesthetic-img {
+      position: absolute;
+      opacity: 0.9;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .img-shield {
+      left: 4vw;
+      top: 10vh;
+      width: 80px;
+      height: 80px;
+      animation: floatY 4s ease-in-out infinite alternate;
+      animation-delay: 0.2s;
+    }
+    .img-lock {
+      right: 4vw;
+      top: 18vh;
+      width: 70px;
+      height: 70px;
+      animation: floatY 5s ease-in-out infinite alternate;
+      animation-delay: 0.7s;
+    }
+    .img-grid {
+      left: 50vw;
+      bottom: 8vh;
+      width: 120px;
+      height: 60px;
+      transform: translateX(-50%);
+      animation: floatY 6s ease-in-out infinite alternate;
+      animation-delay: 1.2s;
+    }
+    @keyframes floatY {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-24px); }
+    }
+    @media (max-width: 600px) {
+      .img-shield, .img-lock, .img-grid { display: none; }
+      .main-content { margin-top: 20px; }
+      .portal-title { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar-cyber">
+    <div class="navbar-icons">
+      <a href="/" class="navbar-icon-link"><i class="fas fa-home"></i>Home</a>
+      <a href="/report" class="navbar-icon-link"><i class="fas fa-file-alt"></i>Reports</a>
+      <a href="/login" class="navbar-icon-link"><i class="fas fa-sign-in-alt"></i>Login</a>
+      <a href="/register" class="navbar-icon-link"><i class="fas fa-user-plus"></i>Register</a>
+    </div>
+  </div>
+  <div class="main-content">
+    <div class="portal-title">Cybercrime Reporting Portal</div>
+    <div class="portal-quote">"Your safety online starts with your voice."</div>
+    <div class="report-title">Report Cybercrimes Securely</div>
+    <div class="report-subtitle">Protect yourself and help fight online threats.</div>
+    <a href="/report" class="report-btn-cyber">Report Now</a>
+    <!-- Aesthetic SVG Images -->
+    <svg class="aesthetic-img img-shield" viewBox="0 0 64 64" fill="none"><path d="M32 6L54 14V30C54 44 32 58 32 58C32 58 10 44 10 30V14L32 6Z" stroke="#1976d2" stroke-width="3" fill="#fff"/><path d="M32 24V36" stroke="#1976d2" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="20" r="3" fill="#1976d2"/></svg>
+    <svg class="aesthetic-img img-lock" viewBox="0 0 64 64" fill="none"><rect x="14" y="28" width="36" height="24" rx="6" stroke="#1976d2" stroke-width="3" fill="#fff"/><path d="M20 28V20C20 13.3726 25.3726 8 32 8C38.6274 8 44 13.3726 44 20V28" stroke="#1976d2" stroke-width="3"/><circle cx="32" cy="40" r="4" fill="#1976d2"/></svg>
+    <svg class="aesthetic-img img-grid" viewBox="0 0 120 60" fill="none"><rect x="2" y="2" width="116" height="56" rx="10" stroke="#1976d2" stroke-width="3" fill="#fff"/><line x1="40" y1="2" x2="40" y2="58" stroke="#1976d2" stroke-width="2"/><line x1="80" y1="2" x2="80" y2="58" stroke="#1976d2" stroke-width="2"/><line x1="2" y1="20" x2="118" y2="20" stroke="#1976d2" stroke-width="2"/><line x1="2" y1="40" x2="118" y2="40" stroke="#1976d2" stroke-width="2"/></svg>
+  </div>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</body>
+</html>
+
